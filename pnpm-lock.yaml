@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@astrox/connection': 0.0.32
+  '@astrox/connection': 0.0.33
   '@dfinity/agent': ^0.10.1
   '@dfinity/auth-client': ^0.10.1
   '@dfinity/authentication': ^0.10.1
@@ -25,7 +25,7 @@ specifiers:
   typescript: ^4
 
 dependencies:
-  '@astrox/connection': 0.0.32
+  '@astrox/connection': 0.0.33
   '@dfinity/agent': 0.10.2_6d3682b84272c93955aac3ac2a5416b9
   '@dfinity/auth-client': 0.10.2_0481c3aef2bcde05e0cde22ddcba5903
   '@dfinity/authentication': 0.10.2_69bc0f27a72655974dff7bec973abf09
@@ -52,8 +52,8 @@ devDependencies:
 
 packages:
 
-  /@astrox/connection/0.0.32:
-    resolution: {integrity: sha512-CXKuvN5KQtPEzdKbaFwcZSaOLxx0GpZfVtL4iJvTEkKM+Jao55sTXXdt4WA/Sow6xbvuOvVam7klJYNx4JNQjA==}
+  /@astrox/connection/0.0.33:
+    resolution: {integrity: sha512-yKoYfPn7yvMDdRUeTAlnU5AlPq8Sc9La5Z0J88OeD4bcNtFPkjwbRZy5CS2qfIzlh9e8Ojfg3nHcS0wd0L4kHg==}
     dependencies:
       '@dfinity/agent': 0.10.2_6d3682b84272c93955aac3ac2a5416b9
       '@dfinity/authentication': 0.10.1_69bc0f27a72655974dff7bec973abf09
@@ -62,6 +62,7 @@ packages:
       '@dfinity/principal': 0.10.2
       '@types/crc': 3.4.0
       crc: 3.8.0
+      cross-fetch: 3.1.4
     dev: false
 
   /@babel/code-frame/7.12.11:
@@ -5013,6 +5014,12 @@ packages:
       sha.js: 2.4.11
     dev: true
 
+  /cross-fetch/3.1.4:
+    resolution: {integrity: sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==}
+    dependencies:
+      node-fetch: 2.6.1
+    dev: false
+
   /cross-spawn/5.1.0:
     resolution: {integrity: sha1-6L0O/uWPz/b4+UUQoKVUu/ojVEk=}
     dependencies:
@@ -8178,6 +8185,11 @@ packages:
 
   /node-addon-api/2.0.2:
     resolution: {integrity: sha512-Ntyt4AIXyaLIuMHF6IOoTakB3K+RWxwtsHNRxllEoA6vPwP9o4866g6YWDLUdnucilZhmkxiHwHr11gAENw+QA==}
+    dev: false
+
+  /node-fetch/2.6.1:
+    resolution: {integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==}
+    engines: {node: 4.x || >=6.0.0}
     dev: false
 
   /node-gyp-build/4.3.0:

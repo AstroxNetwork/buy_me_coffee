@@ -67,7 +67,6 @@ export const MainLayout = (children: any) => {
   const [state, actions] = useModel(appModel);
 
   const login = async () => {
-    console.log(process.env);
     await IC.connect({
       useFrame: !(window.innerWidth < 768),
       walletProviderUrl: process.env.isProduction!
@@ -152,20 +151,12 @@ export const MainLayout = (children: any) => {
 
   useEffect(() => {
     if (sessionStorage.getItem('ic-delegation') !== null) {
-      console.log('asdfasfasd');
       (async () => {
-        console.log('hjjjj');
         await login();
       })();
     } else {
-      console.log('123123123');
       history.push('/empty');
     }
-
-    // console.log('lllll');
-    // setDefault();
-    // console.log('456');
-    // history.push('/empty');
   }, []);
 
   useEffect(() => {
@@ -185,7 +176,6 @@ export const MainLayout = (children: any) => {
             }
           })();
         } else {
-          console.log('234234234234');
           actions.setPrincipal(people.id.toText());
           actions.setWallet(people.wallet);
           actions.setName(people.name);

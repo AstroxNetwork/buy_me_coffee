@@ -38,7 +38,6 @@ export const Dashboard = () => {
   );
 
   const { actor, principal } = state;
-  console.log({ principal });
 
   const getAllPeople = async () => {
     const allPeople = await actor?.allPeople();
@@ -80,14 +79,19 @@ export const Dashboard = () => {
       </Space>
       <BuyCoffeeModal
         checkout={async ({ wallet: thisWallet, amount }) => {
-          console.log({ thisWallet, amount });
           const ic = (window as any).ic as IC;
-          ic.requestTransfer({
+          const result = await ic.requestTransfer({
             to: thisWallet,
             from: ic.wallet!,
             amount: balanceFromString(amount),
             sendOpts: {},
           });
+          if (result !== undefined) {
+            setModalVisible(false);
+            setChooseName(undefined);
+            setChoosePrincipal(undefined);
+            setChooseWallet(undefined);
+          }
         }}
         modalVisible={modalVisible}
         setModalVisible={val => {

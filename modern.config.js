@@ -14,6 +14,9 @@ export default defineConfig({
         },
       },
     },
+    terser: opts => {
+      opts.terserOptions.compress.drop_console = true;
+    },
     webpack: (config, { env, chain }) => {
       const isProduction = env === 'production';
       // config.test = /\.svg$/;

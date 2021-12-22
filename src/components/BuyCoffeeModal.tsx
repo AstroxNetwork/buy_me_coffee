@@ -44,7 +44,10 @@ export const BuyCoffeeModal = ({
       <Button
         type="primary"
         theme="borderless"
-        onClick={() => setModalVisible(false)}
+        onClick={() => {
+          setModalVisible(false);
+          setAmount('');
+        }}
         style={btnStyle}>
         Maybe Not
       </Button>
@@ -68,6 +71,7 @@ export const BuyCoffeeModal = ({
       visible={modalVisible}
       onOk={() => checkout({ wallet, amount })}
       onCancel={() => {
+        setAmount('');
         setModalVisible(false);
       }}
       footer={footer}
