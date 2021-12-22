@@ -39,7 +39,7 @@ export const BuyCoffeeModal = ({
         disabled={amount === ''}
         onClick={() => checkout({ wallet, amount })}
         style={btnStyle}>
-        Buy Him Coffee
+        Buy Him/Her Coffee
       </Button>
       <Button
         type="primary"
