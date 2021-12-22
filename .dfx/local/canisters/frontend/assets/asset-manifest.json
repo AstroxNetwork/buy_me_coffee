@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.css",
+    "main.js": "/static/js/main.js",
+    "runtime-main.js": "/static/js/runtime-main.js",
+    "static/css/vendors-node_modules_pnpm_astrox_connection_0_0_31_node_modules_astrox_connection_lib_cjs_typ-e57cb2.css": "/static/css/vendors-node_modules_pnpm_astrox_connection_0_0_31_node_modules_astrox_connection_lib_cjs_typ-e57cb2.css",
+    "static/js/vendors-node_modules_pnpm_astrox_connection_0_0_31_node_modules_astrox_connection_lib_cjs_typ-e57cb2.js": "/static/js/vendors-node_modules_pnpm_astrox_connection_0_0_31_node_modules_astrox_connection_lib_cjs_typ-e57cb2.js",
+    "html/main/index.html": "/html/main/index.html",
+    "route.json": "/route.json",
+    "main.js.map": "/static/js/main.js.map",
+    "runtime-main.js.map": "/static/js/runtime-main.js.map",
+    "runtime-main.hot-update.js.map": "/runtime-main.95b09c6d490260be.hot-update.js.map",
+    "vendors-node_modules_pnpm_astrox_connection_0_0_31_node_modules_astrox_connection_lib_cjs_typ-e57cb2.js.map": "/static/js/vendors-node_modules_pnpm_astrox_connection_0_0_31_node_modules_astrox_connection_lib_cjs_typ-e57cb2.js.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.js",
+    "runtime-main.95b09c6d490260be.hot-update.js",
+    "static/css/vendors-node_modules_pnpm_astrox_connection_0_0_31_node_modules_astrox_connection_lib_cjs_typ-e57cb2.css",
+    "static/js/vendors-node_modules_pnpm_astrox_connection_0_0_31_node_modules_astrox_connection_lib_cjs_typ-e57cb2.js",
+    "static/css/main.css",
+    "static/js/main.js"
+  ]
+}

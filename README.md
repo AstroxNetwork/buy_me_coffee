@@ -1,5 +1,9 @@
 # Your MWA
 
+## online version:
+
+https://2f4b4-faaaa-aaaah-aa6gq-cai.raw.ic0.app
+
 ## Prerequisites
 
 1. [Node.js LTS](https://github.com/nodejs/Release)

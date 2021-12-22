@@ -1,0 +1,44 @@
+type Wallet = text;
+type Result_1 = 
+ variant {
+   err: Error;
+   ok: bool;
+ };
+type Result = 
+ variant {
+   err: Error;
+   ok: People;
+ };
+type PeopleUpdate = 
+ record {
+   name: text;
+   wallet: Wallet;
+ };
+type PeopleItem = 
+ record {
+   people: People;
+   "principal": ID;
+ };
+type People = 
+ record {
+   id: ID;
+   name: text;
+   wallet: Wallet;
+ };
+type ID = principal;
+type Error = 
+ variant {
+   AlreadyExists;
+   NotAuthorized;
+   NotFound;
+   WrongCaller;
+ };
+type BuyMeCoffee = 
+ service {
+   allPeople: () -> (vec PeopleItem) query;
+   create: (PeopleUpdate) -> (Result);
+   delete: () -> (Result_1);
+   read: () -> (Result) query;
+   update: (PeopleUpdate) -> (Result);
+ };
+service : () -> BuyMeCoffee
