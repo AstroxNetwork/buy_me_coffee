@@ -12,8 +12,8 @@ import {
 import { appModel } from '@/models/app';
 
 export const Register = () => {
-  const [state] = useModel(appModel);
-  const { actor, wallet, principal } = state;
+  const [state, actions] = useModel(appModel);
+  const { actor, wallet, principal, name } = state;
   const [loading, setLoading] = useState<boolean>(false);
   const history = useHistory();
 
@@ -26,7 +26,11 @@ export const Register = () => {
 
     setLoading(false);
     if ((result as { ok: People }).ok !== undefined) {
-      history.push('/dashboard');
+      const res = (result as { ok: People }).ok;
+      actions.setName(res.name);
+      actions.setPrincipal(res.id.toText());
+      actions.setWallet(res.wallet);
+      history.push('/');
     } else {
       Modal.error({
         title: 'Unfortunately, there is an error',

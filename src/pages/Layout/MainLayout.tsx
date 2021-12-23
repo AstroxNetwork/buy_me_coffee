@@ -116,6 +116,7 @@ export const MainLayout = (children: any) => {
     setName(undefined);
     actions.setPrincipal('unknown');
     actions.setWallet('unknown');
+    actions.setName(undefined);
     actions.setIsAuth(false);
     setPeople(undefined);
     setModalVisible(false);
@@ -189,13 +190,17 @@ export const MainLayout = (children: any) => {
   return (
     <Layout
       style={{
-        position: 'fixed',
-        height: '100%',
+        minHeight: '100%',
         width: '100%',
         padding: 0,
         margin: 0,
       }}>
-      <Header style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>
+      <Header
+        style={{
+          backgroundColor: 'var(--semi-color-bg-1)',
+          position: 'fixed',
+          width: '100%',
+        }}>
         <div>
           <Nav mode="horizontal" defaultSelectedKeys={['Home']}>
             <Nav.Header>
@@ -224,10 +229,10 @@ export const MainLayout = (children: any) => {
               <Button onClick={isAuth ? () => setModalVisible(true) : login}>
                 {isAuth ? (
                   <Avatar
-                    color={name !== undefined ? 'blue' : 'orange'}
+                    color={state.name !== undefined ? 'blue' : 'orange'}
                     size="small">
-                    {name !== undefined
-                      ? name.substring(0, 2).toUpperCase()
+                    {state.name !== undefined
+                      ? state.name.substring(0, 2).toUpperCase()
                       : 'NA'}
                   </Avatar>
                 ) : (
@@ -240,6 +245,7 @@ export const MainLayout = (children: any) => {
       </Header>
       <Content
         style={{
+          marginTop: 64,
           padding: '24px',
           backgroundColor: 'var(--semi-color-bg-0)',
           display: 'flex',
