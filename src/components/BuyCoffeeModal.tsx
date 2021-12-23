@@ -1,6 +1,7 @@
 import { IconUserCircle } from '@douyinfe/semi-icons';
 import { Button, Input, List, Modal } from '@douyinfe/semi-ui';
 import { useState } from 'react';
+import { CoffeeIcon } from './CoffeeButton';
 
 interface CheckoutInterface {
   wallet: string;
@@ -34,12 +35,13 @@ export const BuyCoffeeModal = ({
   const footer = (
     <div style={{ textAlign: 'center' }}>
       <Button
-        type="danger"
+        type="warning"
         theme="solid"
         disabled={amount === ''}
+        icon={<CoffeeIcon />}
         onClick={() => checkout({ wallet, amount })}
         style={btnStyle}>
-        Buy Him/Her Coffee
+        Buy Coffee
       </Button>
       <Button
         type="primary"

@@ -54,6 +54,7 @@
     "@douyinfe/semi-icons": "^2.1.5",
     "@douyinfe/semi-illustrations": "^2.1.5",
     "@douyinfe/semi-ui": "^2.1.5",
+    "@modern-js/plugin-less": "^1.1.1",
     "@modern-js/runtime": "^1.0.0",
     "@svgr/webpack": "^6.1.2",
     "react": "^17.0.1",

@@ -1,6 +1,6 @@
 import { Switch, Route } from '@modern-js/runtime/router';
 
-import './App.css';
+// import './global.less';
 import { MainLayout } from './pages/Layout/MainLayout';
 
 const App: React.FC = () => <MainLayout />;

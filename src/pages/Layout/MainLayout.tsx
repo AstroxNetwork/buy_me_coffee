@@ -43,6 +43,7 @@ import { EmptyPage } from '../Empty';
 import { BuyMeCoffee, People, Result } from '@/canisters/buymecoffee/types';
 import { idlFactory } from '@/canisters/buymecoffee';
 import { appModel } from '@/models/app';
+import '../../global.less';
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
@@ -194,11 +195,11 @@ export const MainLayout = (children: any) => {
         width: '100%',
         padding: 0,
         margin: 0,
+        backgroundColor: 'var(--semi-color-bg-0)',
       }}>
       <Header
         style={{
           backgroundColor: 'var(--semi-color-bg-1)',
-          position: 'fixed',
           width: '100%',
         }}>
         <div>
@@ -245,13 +246,13 @@ export const MainLayout = (children: any) => {
       </Header>
       <Content
         style={{
-          marginTop: 64,
           padding: '24px',
           backgroundColor: 'var(--semi-color-bg-0)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'stretch',
           justifyContent: 'flex-start',
+          minHeight: window.innerHeight - 60,
         }}>
         <Switch>
           <Route exact={true} path="/">
@@ -280,7 +281,7 @@ export const MainLayout = (children: any) => {
           wallet={wallet}
         />
       </Content>
-      <Footer
+      {/* <Footer
         style={{
           display: 'flex',
           justifyContent: 'space-between',
@@ -300,7 +301,7 @@ export const MainLayout = (children: any) => {
           <span style={{ marginRight: '24px' }}>Github</span>
           <span>Twitter</span>
         </span>
-      </Footer>
+      </Footer> */}
     </Layout>
   );
 };
