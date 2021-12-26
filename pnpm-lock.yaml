@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@astrox/connection': 0.0.33
+  '@astrox/connection': 0.0.37
   '@dfinity/agent': ^0.10.1
   '@dfinity/auth-client': ^0.10.1
   '@dfinity/authentication': ^0.10.1
@@ -26,7 +26,7 @@ specifiers:
   typescript: ^4
 
 dependencies:
-  '@astrox/connection': 0.0.33
+  '@astrox/connection': 0.0.37
   '@dfinity/agent': 0.10.2_6d3682b84272c93955aac3ac2a5416b9
   '@dfinity/auth-client': 0.10.2_0481c3aef2bcde05e0cde22ddcba5903
   '@dfinity/authentication': 0.10.2_69bc0f27a72655974dff7bec973abf09
@@ -54,8 +54,8 @@ devDependencies:
 
 packages:
 
-  /@astrox/connection/0.0.33:
-    resolution: {integrity: sha512-yKoYfPn7yvMDdRUeTAlnU5AlPq8Sc9La5Z0J88OeD4bcNtFPkjwbRZy5CS2qfIzlh9e8Ojfg3nHcS0wd0L4kHg==}
+  /@astrox/connection/0.0.37:
+    resolution: {integrity: sha512-iEKFZTgdnRG6IKhzyFjsBoyeKBE82cMkb1hU2Uig2BMLcK08r+NWqI9hjAEg8i8BlDzUI4gmAJtsdcAtxB5tMg==}
     dependencies:
       '@dfinity/agent': 0.10.2_6d3682b84272c93955aac3ac2a5416b9
       '@dfinity/authentication': 0.10.1_69bc0f27a72655974dff7bec973abf09

@@ -86,6 +86,7 @@ export const Dashboard = () => {
             amount: balanceFromString(amount),
             sendOpts: {},
           });
+          console.log({ result });
           if (result !== undefined) {
             setModalVisible(false);
             setChooseName(undefined);

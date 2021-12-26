@@ -70,6 +70,9 @@ export const MainLayout = (children: any) => {
   const login = async () => {
     await IC.connect({
       useFrame: !(window.innerWidth < 768),
+      signerProviderUrl: process.env.isProduction!
+        ? 'https://63k2f-nyaaa-aaaah-aakla-cai.raw.ic0.app/signer'
+        : 'http://localhost:8080/signer',
       walletProviderUrl: process.env.isProduction!
         ? 'https://63k2f-nyaaa-aaaah-aakla-cai.raw.ic0.app/transaction'
         : 'http://localhost:8080/transaction', // 'http://localhost:8080/transaction', // "https://63k2f-nyaaa-aaaah-aakla-cai.raw.ic0.app/transaction",

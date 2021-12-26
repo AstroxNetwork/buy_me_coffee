@@ -44,7 +44,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@astrox/connection": "0.0.33",
+    "@astrox/connection": "0.0.37",
     "@dfinity/agent": "^0.10.1",
     "@dfinity/auth-client": "^0.10.1",
     "@dfinity/authentication": "^0.10.1",
