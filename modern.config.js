@@ -4,9 +4,19 @@ import { defineConfig } from '@modern-js/app-tools';
 // import type WebpackChain from 'webpack-chain';
 import webpack from 'webpack';
 
+const isProduction = process.env === 'production';
+
 export default defineConfig({
+  source: {
+    globalVars: {
+      ME_ASSETS_CANISTER_ID: isProduction
+      ? require('./canister_Ids_config.json').me_assets.ic
+      : require('./canister_Ids_config.json').me_assets.local,
+    }
+  },
   tools: {
     devServer: {
+      port: 8081,
       proxy: {
         '/api': {
           target: 'http://localhost:8000/',
@@ -14,11 +24,12 @@ export default defineConfig({
         },
       },
     },
-    terser: opts => {
-      opts.terserOptions.compress.drop_console = true;
-    },
+    // terser: opts => {
+    //   opts.terserOptions.compress.drop_console = true;
+    // },
+
     webpack: (config, { env, chain }) => {
-      const isProduction = env === 'production';
+      console.log('是否生产环境', isProduction);
       // config.test = /\.svg$/;
       // config.use = ['@svgr/webpack'];
       // config.plugins.push(

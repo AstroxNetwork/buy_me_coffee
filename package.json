@@ -5,7 +5,7 @@
     "reset": "del-cli node_modules",
     "dev": "modern dev",
     "build": "echo {}",
-    "dist": "modern build",
+    "dist": " NODE_ENV=production modern build",
     "start": "modern start",
     "new": "modern new",
     "lint": "modern lint",
@@ -17,7 +17,7 @@
     "gen:ts": "pnpm run gen && pnpm run copy:types && pnpm run copy:js"
   },
   "engines": {
-    "node": ">=14.17.6"
+    "node": ">=14.17.0"
   },
   "eslintConfig": {
     "extends": [
