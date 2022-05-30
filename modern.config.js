@@ -4,7 +4,8 @@ import { defineConfig } from '@modern-js/app-tools';
 // import type WebpackChain from 'webpack-chain';
 import webpack from 'webpack';
 
-const isProduction = process.env === 'production';
+const isProduction = (process.env.NODE_ENV === 'production');
+
 
 export default defineConfig({
   source: {
@@ -24,12 +25,10 @@ export default defineConfig({
         },
       },
     },
-    // terser: opts => {
-    //   opts.terserOptions.compress.drop_console = true;
-    // },
-
+    terser: opts => {
+      opts.terserOptions.compress.drop_console = true;
+    },
     webpack: (config, { env, chain }) => {
-      console.log('是否生产环境', isProduction);
       // config.test = /\.svg$/;
       // config.use = ['@svgr/webpack'];
       // config.plugins.push(

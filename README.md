@@ -11,6 +11,10 @@ https://2f4b4-faaaa-aaaah-aa6gq-cai.raw.ic0.app
 
 ## Get Started
 
+```
+npm install -g pnpm && pnpm install
+```
+
 按开发环境的要求，运行和调试项目
 
 ```
