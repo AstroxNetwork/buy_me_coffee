@@ -19,6 +19,7 @@ export const Register = () => {
 
   const registerPeople = async (values: Record<string, any>) => {
     setLoading(true);
+    console.log('actor======', actor);
     const result = await actor?.create({
       name: values.name,
       wallet: values.wallet,

@@ -1,5 +1,4 @@
-import { IC } from '@astrox/connection';
-import { PermissionsType } from '@astrox/connection/lib/cjs/types';
+import { IC } from '@astrox/sdk-web';
 import {
   IconCode,
   IconHome,
@@ -47,14 +46,14 @@ import '../../global.less';
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
-
+let ICObject;
 export const MainLayout = (children: any) => {
   const { body } = document;
   const [principal, setPrincipal] = useState<string>('unknown');
   const [wallet, setWallet] = useState<string>('unknown');
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [name, setName] = useState<string | undefined>(undefined);
-  const [ic, setIC] = useState<IC>((window as any).ic);
+  const [ic, setIC] = useState<IC>((window as any).ic.astrox);
   const [isLight, setIsLight] = useState<boolean>(
     !body.hasAttribute('theme-mode'),
   );
@@ -67,21 +66,17 @@ export const MainLayout = (children: any) => {
   const history = useHistory();
   const [state, actions] = useModel(appModel);
 
-  const login = async () => {
-    await IC.connect({
-      useFrame: !(window.innerWidth < 768),
-      signerProviderUrl: process.env.isProduction!
-        ? `https://${ME_ASSETS_CANISTER_ID}.ic0.app/signer`
-        : 'http://localhost:8080/signer',
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async () => {
+    ICObject = await IC.create({
       walletProviderUrl: process.env.isProduction!
-        ? `https://${ME_ASSETS_CANISTER_ID}.ic0.app/transaction`
+        ? `https://${ME_ASSETS_CANISTER_ID}.raw.ic0.app/transaction`
         : 'http://localhost:8080/transaction', // 'http://localhost:8080/transaction', // "https://zwbmf-zyaaa-aaaai-acjaq-cai.ic0.app/transaction",
-      identityProvider: process.env.isProduction!
-        ? `https://${ME_ASSETS_CANISTER_ID}.ic0.app/login#authorize`
-        : 'http://localhost:8080/login#authorize', // 'http://localhost:8080/login#authorize', // 'https://63k2f-nyaaa-aaaah-aakla-cai.raw.ic0.app/login#authorize',
-      permissions: [PermissionsType.identity, PermissionsType.wallet],
-      onAuthenticated: (icInstance: IC) => {
-        const thisIC = window.ic ?? icInstance;
+      onAuthenticated: async (icInstance: IC) => {
+        const thisIC = icInstance;
         setPrincipal(thisIC.principal.toText());
         setWallet(thisIC.wallet ?? 'unknown');
         setIsAuth(true);
@@ -89,7 +84,43 @@ export const MainLayout = (children: any) => {
         actions.setWallet(thisIC.wallet ?? 'unknown');
         actions.setIsAuth(true);
         setIC(thisIC);
-        const thisActor = icInstance.createActor<BuyMeCoffee>(
+        const thisActor = await icInstance.createActor<BuyMeCoffee>(
+          idlFactory,
+          process.env.CANISTER_ID!,
+        );
+        setActor(thisActor);
+        actions.setActor(thisActor);
+      },
+    });
+  };
+
+  const login = async () => {
+    ICObject.connect({
+      useFrame: !(window.innerWidth < 768),
+      signerProviderUrl: process.env.isProduction!
+        ? `https://${ME_ASSETS_CANISTER_ID}.raw.ic0.app/signer`
+        : 'http://localhost:8080/signer',
+      walletProviderUrl: process.env.isProduction!
+        ? `https://${ME_ASSETS_CANISTER_ID}.raw.ic0.app/transaction`
+        : 'http://localhost:8080/transaction', // 'http://localhost:8080/transaction', // "https://zwbmf-zyaaa-aaaai-acjaq-cai.ic0.app/transaction",
+      identityProvider: process.env.isProduction!
+        ? `https://${ME_ASSETS_CANISTER_ID}.raw.ic0.app/login#authorize`
+        : 'http://localhost:8080/login#authorize', // 'http://localhost:8080/login#authorize', // 'https://63k2f-nyaaa-aaaah-aakla-cai.raw.ic0.app/login#authorize',
+      delegationTargets: [
+        // 'wflfh-4yaaa-aaaaa-aaata-cai',
+        process.env.CANISTER_ID!,
+      ],
+      onAuthenticated: async (icInstance: IC) => {
+        console.log('aaaa', icInstance);
+        const thisIC = icInstance;
+        setPrincipal(thisIC.principal.toText());
+        setWallet(thisIC.wallet ?? 'unknown');
+        setIsAuth(true);
+        actions.setPrincipal(thisIC.principal.toText());
+        actions.setWallet(thisIC.wallet ?? 'unknown');
+        actions.setIsAuth(true);
+        setIC(thisIC);
+        const thisActor = await icInstance.createActor<BuyMeCoffee>(
           idlFactory,
           process.env.CANISTER_ID!,
         );
