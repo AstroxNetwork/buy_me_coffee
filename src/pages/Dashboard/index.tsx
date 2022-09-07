@@ -55,8 +55,13 @@ export const Dashboard = () => {
   };
 
   const sendNft = async (values: TransactionNFT) => {
+    console.log('values===', values);
     const ic = (window as any).ic.astrox as IC;
-    const result = await ic.requestTransfer(values as TransactionOptions);
+    const result = await ic.requestTransfer({
+      from: ic.wallet,
+      ...values,
+      tokenIndex: Number(values.tokenIndex),
+    } as TransactionOptions);
     console.log(result);
   };
 
@@ -76,6 +81,13 @@ export const Dashboard = () => {
           getFormApi={formApi => {}}>
           {({ formState, values, formApi }) => (
             <>
+              <Form.Input
+                field="to"
+                label="To"
+                style={{ width: '100%', maxWidth: 400 }}
+                required={true}
+                placeholder="To"
+              />
               <Form.Input
                 field="tokenIndex"
                 label="TokenIndex"

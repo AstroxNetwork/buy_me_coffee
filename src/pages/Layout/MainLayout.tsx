@@ -72,6 +72,7 @@ export const MainLayout = (children: any) => {
 
   const init = async () => {
     ICObject = await IC.create({
+      useFrame: document.body.clientWidth > 768 ? true : undefined,
       walletProviderUrl: process.env.isProduction!
         ? `https://${ME_ASSETS_CANISTER_ID}.raw.ic0.app/transaction`
         : 'http://localhost:8080/transaction', // 'http://localhost:8080/transaction', // "https://zwbmf-zyaaa-aaaai-acjaq-cai.ic0.app/transaction",
